@@ -33,6 +33,8 @@ function initialize_gmaps() {
     var marker = new google.maps.Marker(opts);
   }
 
+  return drawLocation;
+
   // var hotelLocation = [40.705137, -74.007624];
   // var restaurantLocations = [
   //       [40.705137, -74.013940],
@@ -58,9 +60,7 @@ function initialize_gmaps() {
 //   });
  }
 
-$(document).ready(function() {
-  initialize_gmaps();
-});
+
 
 var styleArr = [{
   featureType: 'landscape',
