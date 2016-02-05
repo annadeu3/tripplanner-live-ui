@@ -66,13 +66,10 @@ $(document).ready(function() {
       var $selectedactivity = $('#activityselect option:selected').text();
       $('<div class="itinerary-item" data-marker-id=' + currentMarker + '><span class="title">'+$selectedactivity+'</span><button class="btn btn-xs btn-danger remove btn-circle">x</button></div>').appendTo('#activitylist');
        for(var i = 0; i < activities.length; i++) {
-            // console.log("current hotel name", hotels[i].name)
             
             if(activities[i].name == $selectedactivity) {
-              // console.log("matching hotel",hotels[i]);
               for (var key in activities[i].place[0]) {
                 var activityLocation = activities[i].place[0].location; // array
-                // console.log("location is",hotelLocation)
               }
               break;
             }
@@ -84,20 +81,24 @@ $(document).ready(function() {
   });
 
     $('.list-group').on('click','.btn-danger',function() { 
-      // console.log("removing", $(this));
-      // console.log($(this).parent('.itinerary-item').data('marker-id'));
        var thisMarkerId = ($(this).parent('.itinerary-item').data('marker-id'));
        markerArr[thisMarkerId].setMap(null);
       $(this).parent('.itinerary-item').remove();
     });
 
-     // $('.list-group').on('click',function() { 
-     //      console.log("clicked list-group");
-     //    });
   $('#adddaybtn').on('click', function() {
+    numdays++;
     // console.log("adding another day");
-    $('#adddaybtn').before('<button class="btn btn-circle day-btn">'+ ++numdays +'</button>');
+    $('#adddaybtn').before('<button class="btn btn-circle day-btn real-day" data-day-id=' + numdays + '>'+ numdays +'</button>');
+
     // $('<button class="btn btn-circle day-btn">'+ ++numdays +'</button>').appendTo('.day-buttons');
   });
 
+$('.day-buttons').on('click', '.real-day', function(event) {
+    // console.log("clicked a day button", event.target);
+    $(event.target).siblings().removeClass('current-day');
+    $(event.target).addClass('current-day');
+
+    // $('<button class="btn btn-circle day-btn">'+ ++numdays +'</button>').appendTo('.day-buttons');
+  });
 });
