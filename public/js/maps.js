@@ -31,6 +31,7 @@ function initialize_gmaps() {
     opts.position = new google.maps.LatLng(location[0], location[1]);
     opts.map = map;
     var marker = new google.maps.Marker(opts);
+    return marker;
   }
 
   return drawLocation;
