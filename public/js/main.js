@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var drawLocation = initialize_gmaps();
   var markerArr = [];
+  var numdays = 1;
 
   $('#hotelbutton').on('click', function(){
     var currentMarker = markerArr.length;
@@ -93,5 +94,10 @@ $(document).ready(function() {
      // $('.list-group').on('click',function() { 
      //      console.log("clicked list-group");
      //    });
+  $('#adddaybtn').on('click', function() {
+    // console.log("adding another day");
+    $('#adddaybtn').before('<button class="btn btn-circle day-btn">'+ ++numdays +'</button>');
+    // $('<button class="btn btn-circle day-btn">'+ ++numdays +'</button>').appendTo('.day-buttons');
+  });
 
 });
